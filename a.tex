@@ -1,0 +1,310 @@
+
+\documentclass{article}[20pt]
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{savesym}
+\usepackage{geometry}
+\title{\bf\kai\Huge $\LaTeX$简介}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm}
+\begin{document}
+\part{basics}
+\flushleft
+1.基本环境
+$\backslash$begin\{environment\}[contents]
+\\...your~text...\\
+$\backslash$end\{environment\}
+for example $\backslash$begin\{document\}$\backslash$end\{document\}\\
+二.文字板式
+\begin{itemize}
+	\item [1]center
+	\item[2]fulshleft\&flushright
+	\item[3]itemize usage:$\backslash$begin\{itemize\}\\$\backslash$item[label]description(自动换行)\\$\backslash$end\{itemize\}
+	\item[4]enumerate:label automatically ex.
+	\begin{enumerate}
+		\item item1
+		\item item2
+		\begin{enumerate}
+			\item sub item 1
+			\item sub item 2
+			\begin{enumerate}
+				\item subsub item 1
+				\item[label] sub sub item 2
+			\end{enumerate}
+			\item sub item 3	
+		\end{enumerate}
+	\item  item 3
+	\end{enumerate}
+\item[5] description use $\backslash$item[item]description items are in {\bf {bold}}\\ 
+ex. \begin{description}
+	\item[item1] describption1
+	\item[abcdefghijklmn] des2
+	\item[123456789] 3
+\end{description}
+{\it some flaw:align problems}solution:见书
+\end{itemize}
+\begin{itemize}
+\item[6] verbatim\verb|&|verb print {\bf exactly}~$\forall$ the words
+ex.
+\end{itemize}\flushleft
+\begin{verbatim}
+	the laplacian is \Huge$\AA\bigtriangledown^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$
+\end{verbatim}
+\verb|\Huge$\AA\bigtriangledown^2=\frac{\partial^2}{\partial x^2}+|$\frac{\partial^2}{\partial y^2}$
+verb 可以用|控制截断地方，本编译器默认verb字体为{\tt typewriter}\\
+the laplacian is {\Huge$\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$}\\
+{\center 微分形式的积分} {$${\int}_{\partial S} \omega=\int_S d\omega$$}
+\begin{itemize}\item [7] minipage description:width is smaller\end{itemize}\flushleft
+usage:$\backslash$begin\{minipage\}[pos]{size}contents$\backslash$end\{minipage\}
+\\pos:t(top),b(bottom);size:width
+\begin{itemize}\item[8] quote,quotation similar to minipage 自动居中,quotation产生首行退格\end{itemize}\flushleft
+ex.\begin{quote}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+\end{quote}
+\begin{quotation}
+uae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
+\end{quotation}
+10 verse:诗词排版
+\begin{verse}\flushleft
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\
+Nunc ullamcorper ante nec risus efficitur semper.\\
+Suspendisse id mauris non velit vulputate tincidunt a eu eros.\\
+Morbi sodales lacus a justo lobortis, id viverra sem lacinia.\\
+Donec at odio in ex maximus blandit id id lectus.\\
+Fusce convallis nulla id sem porttitor aliquam.\\
+Maecenas iaculis magna at enim pretium gravida.\\
+\end{verse}
+二.图表环境
+1.tabbing无框表格 用法
+\begin{tabular}{|c|c|}\hline
+	命令 & 效果 \\ \hline
+	$\backslash$= & 设置新表头 \\ \hline
+	$\backslash$> & 次表头 \\ \hline
+	$\backslash$< & 先前表头 \\ \hline
+	$\backslash$ & 靠右   \\ \hline
+	/ &右对齐\\ \hline
+	$\backslash$$\backslash$ &换行\\ \hline
+\end{tabular}
+2.tabular有框表格
+$\backslash$begin\{tabular\}\{ccc|c\},其中c表示列，竖线表示竖线位置，换行用 $\backslash$$\backslash$,下面加上横线用$\backslash$hline
+\\3.table,figure,picture环境
+\\{\bf 4.数学环境}
+(1)math (begin math) $\longleftrightarrow$ \$公式\$ $\longleftrightarrow$ $\backslash$(公式$\backslash$) 用于文字间的公式
+(2)displaymath $\longleftrightarrow$ \$\$公式\$\$ $\longleftrightarrow$ $\backslash$[公式 $\backslash$] 用于一整行的公式
+(3)equation 用于一整行编号的公式
+\\5.array
+{\it 注}使用{\bf$\backslash$left[},{\bf $\backslash$right]}或者{\bf$\backslash$left\{},{\bf $\backslash$right\}}
+即，
+{\bf $\backslash$left,$\backslash$right}配对，后面加上[]\{\}||产生矩阵行列式张量。\\省略号如\verb|$\ddots$,$\ldots$,$\cdots$,$\vdots$,$\dots$|效果如下\\
+$\ddots$,$\ldots$,$\cdots$,$\vdots$,$\dots$
+注意，$\backslash$left必须与$\backslash$right配对，没有就输入.,\{就输入$\backslash$\{.
+\\6.综合使用，即equnarray环境
+\begin{eqnarray}
+x^2+y^2=&1\\ 
+ax^2+by^2=&2\\ 
+\int_{1}^{2}{\frac{\cos 
+		{ x}dx}{\sqrt[3]{
+			a^2 \sin ^2{ x} 
+			+b^2 \cos 
+			{x} +c 
+			\sin {x}
+			 \cos{ x}}}}
+		 = & f(a,b)\\
+		 \oiint_{\partial V}f\cdot dS=\iiint_V \bigtriangledown\cdot f dV
+\end{eqnarray}
+
+\part{basics:commands}
+1.documentstyle
+\\$\backslash$ documentstyle{style}[options] 适用于本编译器
+ options= $$\left\{
+\begin{array}{c}
+	1pt,12pt,... \\
+	twoside,twocolumn,titlepage,proc\\
+	leqno,fleqn
+\end{array}\right.$$
+默认 10pt,单面，公式居中
+
+2.fonts
+\begin{description}
+	\item[$\backslash$rm] {\rm romanian abcdefgABCDEFG}
+	\item [$\backslash$bf]{\bf bold abcdefgABCDEFG}(Chinese $\backslash$heiti {\heiti 黑体})
+	\item[$\backslash$it] {\it italic abcdefgABCDEFG}
+	\item [$\backslash$sl]{\sl italic? abcdefgABCDEFG}
+	\item[$\backslash$tt] {\tt typewriter abcdefgABCDEFG}
+	\item [$\backslash$Cal]{$\cal ABCDEFG$}花体:不支持小写
+	\item [$\backslash$songti]{\songti 宋体}
+	\item [$\backslash$kaishu]{\kaishu 楷书}
+	\item [$\backslash$fangsong]{\fangsong 仿宋}
+	\item[$\backslash$heiti] {\heiti 黑体}
+(2)字号 $\backslash$zihao
+3.header
+title,author\{name$\backslash$ address\},date\{md,y\},maketitle
+注释\thanks{注释}\footnote{注释footnote}
+\end{description}
+\thanks{Lorem ipsum}\footnote[2]{Lorem ipsum}
+\section{margins}
+\subsubsection{多列：$\backslash$twocolumn\{text：单列文档\}}e.g.
+\twocolumn
+[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet metus quis turpis vestibulum, vitae tincidunt enim consectetur. Aliquam nec porttitor neque. Maecenas in quam augue. Nunc eleifend porta neque. Morbi sed turpis eget enim luctus ultricies ut et urna. Ut mattis consectetur dui\ref{fig:2} mattis molestie. Nullam ullamcorper libero justo, a consequat eros rutrum vitae. Duis fermentum velit sem, eget faucibus leo molestie et. Quisque est erat, tristique ut semper sed, egestas ac urna. Vestibulum nec feugiat orci. Vestibulum sapien enim, placerat vel enim vel, mattis congue felis. Etiam dapibus erat id semper hendrerit. Duis iaculis blandit feugiat. Mauris non velit nisl.
+]
+
+Duis dictum rutrum mi, quis interdum felis vehicula at. Donec hendrerit metus lorem, accumsan lacinia felis ultricies vel. Ut volutpat enim id ipsum vulputate semper. Integer dignissim auctor placerat. Mauris imperdiet dictum diam, vitae luctus est dignissim sit amet. Vestibulum sed imperdiet ex, non elementum neque. Curabitur malesuada leo sit amet erat sagittis, ut euismod nisl mollis. Cras sed augue elit. Suspendisse convallis efficitur scelerisque. Pellentesque interdum tellus risus, maximus rhoncus mauris condimentum ac. Aenean non augue sapien. Curabitur tempus congue metus eu consectetur. Pellentesque at finibus mi, quis euismod libero.
+Pellentesque dictum finibus lorem at sagittis. Nam quis ornare urna, ut hendrerit augue. Integer pulvinar, lacus nec ultricies tristique, lectus ipsum facilisis enim, in egestas libero orci ac lacus. Vestibulum lacus augue, mollis non tincidunt id, posuere sagittis risus. In hac habitasse platea dictumst. Sed condimentum felis convallis sapien dictum elementum. In ultrices sem quis dolor elementum ultricies. Sed mollis finibus neque, vel luctus ante\ref{fig:1} feugiat malesuada. Etiam ac nibh semper, accumsan tortor quis, bibendum magna. Morbi vitae condimentum ipsum, nec lacinia nisi. Duis fringilla diam at laoreet vehicula. Vivamus arcu nibh, tempus eget dignissim nec, ultrices a augue. Maecenas ac neque a lectus malesuada ultrices. Ut nisl massa, sollicitudin ut tristique non, congue vitae orci.
+
+\subsubsection{onecolumn}e.g.
+\onecolumn
+Duis sed leo quis enim viverra sodales. Aliquam venenatis nibh eu massa semper faucibus. Quisque placerat, dui at porta maximus, tellus tellus rutrum diam, vitae finibus eros lectus vitae turpis. Nulla orci lorem, molestie non hendrerit eu, semper non neque. Integer id facilisis lorem. Nulla consequat ex neque, ac interdum mi mollis euismod. Cras a lectus tincidunt, hendrerit tortor non, pharetra ex. Etiam aliquet nulla a augue ornare efficitur. Vestibulum est arcu, dignissim et malesuada eget, faucibus id nisl. Vestibulum id vehicula mi, sed cursus mi.
+\subsubsection{文字居中 $\backslash$centerline}
+\subsubsection{编号}
+\subsection{summary}
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+	chapter & part & section & subsection & subsubsection \\ \hline
+\end{tabular}
+\section{equations}
+\begin{tabular}{|c|c|c|c|c|}\hline
+	frac & sqrt & & & \\ \hline
+	ldots & cdots & vdots  &  ddots &\\ \hline
+	! & , & : & ; & over \\ \hline
+	underline & overline & overbrace & underbrace & \\ \hline
+	 left & right & & &\\ \hline
+	 partial & times & & &\\ \hline
+\end{tabular} 
+\section{figures}
+command:$\backslash$arraycolsep change column space. e.g
+{\arraycolsep1in
+\[\left(
+\begin{array}{cc}
+	a & b \\ c & d \\
+\end{array} 
+\right)\]}
+identically,tabcolsep;\\
+to change the width of line in a table $\backslash$arrayrulewidth
+e.g.
+{
+\arrayrulewidth15pt
+\begin{tabular}{c|c|c}\hline
+	a1 & a2 & a3 \\ \hline
+	b1 & b2 & b3\\ \hline
+	c1 & c2 & c3 \\ \hline
+\end{tabular}}
+\\double line command:$\backslash$doublerulesep;\\to add comments use $\backslash$caption:used in a table
+e.g.{\doublerulesep4pt \begin{tabular}{||c||c||c||}\hline
+		a1 & a2 & a3 \\ \hline\hline
+	b1 & b2 & b3\\ \hline\hline
+	c1 & c2 & c3 \\ \hline\hline
+
+\end{tabular}}
+\begin{table}
+	\center
+	\begin{tabular}{|c|c|c|}\hline
+		a1 & a2 & a3 \\ \hline
+		b1 & b2 & b3\\ \hline
+		c1 & c2 & c3 \\ \hline
+\end{tabular}
+	\caption{table 1}
+\end{table}
+line commands:cline : from num1 to num 2
+e.g.
+\begin{tabular}{|c|c|c|}\hline
+	a1 & a2 & a3 \\ \cline{1-2}
+	b1 & b2 & b3\\ \cline{2-3}
+	c1 & c2 & c3 \\ \cline{1-3}
+\end{tabular}
+对于列的处理，使用multicolumn，e.g.
+{\doublerulesep3pt \arrayrulewidth1pt \begin{tabular}{||c|c||c|c|c|}\hline
+	\multicolumn{2}{|l|}{A1} & \multicolumn{3}{|r|}{A2} \\ \cline{1-2}\cline{5-5}
+	b1 & b2 & \multicolumn{2}{|c|}{B3}  & b3 \\ \hline\hline
+	c1 &c2 &c3 &c4 &c5 \\ \hline
+\end{tabular}}
+vertical line command $\backslash$vline(a single verticle line)e.g
+\begin{tabular}{|c|c|c|c|}\hline
+	a1 &a2 \\ \hline
+	b11 \vline b12  & b21 \vline b22\vline b23 \vline b3\vline b4 \\ \hline
+	c1 & c21 \vline  c22 \\ \hline
+\end{tabular}
+\subsubsection{plots}
+$$\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{}}}}}}}}}}}}}^{\sum\frac({\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{}}}}}}}}}}}}}}){\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{}}}}}}}}}}}}}}\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint_{\int_{\oint_{\oiint_{\partial V\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{\iiiint_{\sum_{\prod}^{\prod_{0}^{\prod^{\iiiint^{}}}}}}}}}}}}}}^{}}}}}}}}}}}}}}}}}}}}}}}}}}}$$
+\setlength{\unitlength}{1mm}
+\begin{table}\begin{picture}(120,120)
+	\put(1,10){\line(1,0){120}}
+	\put(50,50){\circle{30}}
+	\put(50,50){\circle*{30}}
+	\put(50,50){\vector(3,4){40}}
+	\put(50,50){\vector(-3,-4){40}}
+	\put(20,60){\oval(33,98)}
+	\multiput(0,0)(1,1){70}{\line(5,2){5}}
+	\multiput(100,0)(-4,3){30}{\circle*{1}}
+	\multiput(0,100)(2,-1){60}{\circle{10}}
+	\multiput(15,50)(1,0){100}{\circle{30}}
+	\put(7.7,50){\vector(0,-1){25}}
+	\put(7.7,50){\line(0,-1){50}}
+	\put(121.3,50){\vector(0,1){25}}
+	\put(121.3,50){\line(0,1){50}}
+	\put(10,80){\makebox(20,5)[c]{this is a picture}}
+	\end{picture}
+	\caption{a sample of picture}
+\end{table}
+\begin{picture}(20,20)
+\put(1,1){\vector(0,1){9}}
+\put(1,1){\vector(1,0){9}}
+\put(1,1){\vector(1,1){7}}
+\put(11,1){\makebox(1,1)[c]{X}}
+\put(1,11){\makebox(1,1)[c]{Y}}
+\put(9,9){\makebox(1,1)[c]{Z}}
+\put(0,0){\framebox(20,20){}}
+\put(7,18){\makebox(6,1)[c]{cordinates}}
+\end{picture}
+\begin{picture}(20,20)
+\put(0,0){\dashbox(20,20)[]{}}
+\end{picture}
+\subsubsection{summary:picture}
+\begin{tabular}{|c|c|}\hline
+	basic command & put\\\hline
+	lines & line \vline vector \\\hline
+	circles & circle \vline circle* \\\hline
+	oval & l \vline \vline r \vline t \vline b \\ \hline
+	commands & setlength \vline addtolength \vline multiput \\\hline
+	frames & makebox \vline framebox \vline dashbox \\ \hline 
+\end{tabular}
+$$\widehat{abc}
+\widetilde{abc}
+\stackrel{some~variables}{\overbrace{abcdef}}
+$$wide hat $\backslash$widehat\{strings\}\\
+wide tilde $\backslash$widetilde\{strings\}\\
+string above other strings $\backslash$stackrel{str1}{str2}\\
+characters using ASCII code $\backslash$symbol\{'\it oct\}~~$\backslash$symbol\{"\it hex\}~or char'oct , char"hex\\
+\subsection{letters}
+\subsection{other commands}
+1.{\bf$\backslash$verb}|your text|\verb|\begin{Huge}内容...\end{Huge}|\\
+2.\begin{description}
+	\item[$\backslash$newpage] start a new page or start a new column
+	\item[$\backslash$eject] start a new page {\it to {\bf make}the previous page full}
+\end{description}
+3.{\bf$\backslash$vspace } and {\bf $\backslash$vskip} 留出空白版面\\
+4.{\bf hfill}  and {\bf vfill} 左侧左对齐，右侧右对齐，中间留白\\
+5.{\bf $\backslash$dotfill} table of contents \dotfill \bf dotfill\\
+6.{\bf $\backslash$mbox\{string\}}the string can be null\\
+7.{\bf $\backslash$hbox $\backslash$vbox}不会断行\\
+8.{\bf $\backslash$raisebox\{height\}\{contents\}}\\
+\section{basics:equations}
+$$\lim_{\stackrel{x\to 0}{y \to 0} }(\sin x)^{\prime}\ge\le(\sin x)'$$
+$\|x\|\bigtriangledown=\nabla\cdot\bigtriangledown=\Delta
+  \stackrel{n}{{\overbrace{\idotsint}}}=\underbrace{\idotsint}\limits_{n}\int_{-\infty}^{+\infty}=\int\limits_{-\infty}^{+\infty}
+$
+\begin{equation}
+\hat{L}_x^2=-\hbar
+\end{equation}
+\begin{figure}
+	\includegraphics[width=10cm,height=10cm]{2}
+	\caption[affiche 1]{c'est un affiche}
+	\label{fig:2}
+\end{figure}
+\begin{figure}
+	\includegraphics{1}
+	\caption{}
+	\label{fig:1}
+\end{figure}
+\part{macros}\cite{key}
+
+\end{document}

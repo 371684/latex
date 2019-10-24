@@ -1,0 +1,17 @@
+\contentsline {part}{I\hspace {1em}basics}{1}{part.1}
+\contentsline {part}{II\hspace {1em}basics:commands}{2}{part.2}
+\contentsline {section}{\numberline {1}margins}{3}{section.1}
+\contentsline {subsubsection}{\numberline {1.0.1}多列：$\delimiter "026E30F $twocolumn\{text：单列文档\}}{3}{subsubsection.1.0.1}
+\contentsline {subsubsection}{\numberline {1.0.2}onecolumn}{4}{subsubsection.1.0.2}
+\contentsline {subsubsection}{\numberline {1.0.3}文字居中 $\delimiter "026E30F $centerline}{5}{subsubsection.1.0.3}
+\contentsline {subsubsection}{\numberline {1.0.4}编号}{5}{subsubsection.1.0.4}
+\contentsline {subsection}{\numberline {1.1}summary}{5}{subsection.1.1}
+\contentsline {section}{\numberline {2}equations}{5}{section.2}
+\contentsline {section}{\numberline {3}figures}{5}{section.3}
+\contentsline {subsubsection}{\numberline {3.0.1}plots}{6}{subsubsection.3.0.1}
+\contentsline {subsubsection}{\numberline {3.0.2}summary:picture}{7}{subsubsection.3.0.2}
+\contentsline {subsection}{\numberline {3.1}letters}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}other commands}{7}{subsection.3.2}
+\contentsline {section}{\numberline {4}basics:equations}{7}{section.4}
+\contentsline {part}{III\hspace {1em}macros}{8}{part.3}
+\contentsfinish 

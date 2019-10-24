@@ -1,0 +1,110 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{van-glossary}
+
+\def\van@mathfont@N{\showname}
+
+\def\van@glossary@def@new@lang@entry#1{%
+\expandafter\gdef\csname #1nameas\endcsname##1{%
+    \expandafter\gdef\csname van@glossary@#1@name@convention\endcsname{##1}%
+}%
+\expandafter\gdef\csname van@glossary@query@#1@name\endcsname##1{%
+\edef\van@glossary@current@convention{\csname van@glossary@#1@name@convention\endcsname}%
+\csname van@glossary@name@\van@glossary@current@convention @##1\endcsname
+}%
+}
+
+\def\van@glossary@newtranscriptionrule#1#2{%
+    \expandafter\gdef\csname van@glossary@def@name@to@#2\endcsname##1##2{%
+        \expandafter\gdef\csname van@glossary@name@##1@category\endcsname{#1}%
+        \expandafter\gdef\csname van@glossary@name@#2@##1\endcsname{%
+            ##2%
+        }%
+    }%
+}
+
+\def\van@glossary@newtranscriptionrules#1#2{%
+    \gdef\van@glossary@newtranscriptionrules@currentlang{#1}%
+    \van@glossary@def@new@lang@entry{#1}%
+    \van@glossary@newtranscriptionrules@to@currentlang{#2}
+}
+
+\def\van@glossary@newtranscriptionrules@to@currentlang#1{%
+    \if^#1^\else
+        \expandafter\van@glossary@newtranscriptionrule\expandafter{\van@glossary@newtranscriptionrules@currentlang}{#1}
+        \expandafter\van@glossary@newtranscriptionrules@to@currentlang
+    \fi
+}
+
+\def\showname#1{\def\van@current@name@category@directive{\csname van@glossary@name@#1@category\endcsname}%
+\let\van@current@name@category\van@current@name@category@directive%
+\csname van@glossary@query@\van@current@name@category @name\endcsname{#1}}
+
+\let\newglossarylang\van@glossary@newtranscriptionrules
+
+\def\van@glossary@process@name@def@cell@keyval#1#2:#3;{%
+    \csname van@glossary@def@name@to@#2\endcsname{#1}{#3}
+}
+\def\van@glossary@process@name@def@cell#1#2{%
+    \van@glossary@process@name@def@cell@keyval{#1}#2;
+}
+\def\van@glossary@process@name@def@row#1;{%
+    \if^#1^\else
+        \expandafter\van@glossary@process@name@def@cell\expandafter{\van@glossary@process@def@key}{#1}
+        \expandafter\van@glossary@process@name@def@row
+    \fi
+}
+\def\van@glossary@process@name@def#1#2#3{%
+    \gdef\van@glossary@process@def@key{#2}
+    \van@glossary@process@name@def@row #3;
+}
+
+\let\newglossaryentry\van@glossary@process@name@def
+
+\newglossarylang{nihongo}{kantaiji}{kanji}{romaji}{hiragana}{}
+\nihongonameas{kanji}
+\newglossarylang{deutsch}{latein}{umlaute}{deutsch}{chinesisch}{}
+\deutschnameas{deutsch}
+\newglossarylang{mixedjargon}{nameonly}{fullchinese}{fulllatin}{}
+\mixedjargonnameas{nameonly}
+\newglossarylang{chinese}{mainland}{taiwan}{hongkong}{singapore}{}
+\chinesenameas{mainland}
+
+\newglossaryentry{nihongo}{Yukawa}{%
+kantaiji:汤川;%
+kanji:湯川;%
+romaji:Yukawa;%
+hiragana:ゆかわ;%
+}
+
+\newglossaryentry{deutsch}{Schrodinger}{%
+latein:Schrodinger;%
+umlaute:Schroedinger;%
+deutsch:Schr\"odinger;%
+chinesisch:薛定谔;%
+}
+
+\newglossaryentry{deutsch}{Gauss}{%
+latein:Gauss;%
+umlaute:Gauss;%
+deutsch:Gau\ss;%
+chinesisch:高斯;%
+}
+
+\newglossaryentry{mixedjargon}{Lagrangian}{%
+nameonly:Lagrange量;%
+fullchinese:拉氏量;%
+fulllatin:Lagrangian;%
+}
+
+\newglossaryentry{chinese}{row}{%
+mainland:行;%
+taiwan:列;%
+hongkong:列;%
+singapore:行;%
+}
+\newglossaryentry{chinese}{column}{%
+mainland:列;%
+taiwan:行;%
+hongkong:行;%
+singapore:列;%
+}
